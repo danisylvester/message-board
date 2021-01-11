@@ -19,30 +19,6 @@ namespace MsgBoard.Controllers
             _context = context;
         }
 
-        // GET: MessagePosts
-        public async Task<IActionResult> Index()
-        {
-            return RedirectToAction("Index","Home",await _context.MessagePost.ToListAsync());
-        }
-
-        // GET: MessagePosts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var messagePost = await _context.MessagePost
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (messagePost == null)
-            {
-                return NotFound();
-            }
-
-            return View(messagePost);
-        }
-
         // GET: MessagePosts/Create
         public IActionResult Create()
         {
@@ -63,42 +39,6 @@ namespace MsgBoard.Controllers
                 ViewBag.MessagePost = messagePost;
             }
             return View(messagePost);
-        }
-
-        // GET: MessagePosts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var messagePost = await _context.MessagePost
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (messagePost == null)
-            {
-                return NotFound();
-            }
-
-            return View(messagePost);
-        }
-
-       
-
-        // POST: MessagePosts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var messagePost = await _context.MessagePost.FindAsync(id);
-            _context.MessagePost.Remove(messagePost);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool MessagePostExists(int id)
-        {
-            return _context.MessagePost.Any(e => e.ID == id);
         }
     }
 }

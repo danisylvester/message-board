@@ -15,3 +15,8 @@
 .subPageHeader{
     margin: 1rem 0rem;
 }
+.responseContainer {
+    background-color: #F7F7F7;
+    padding: 1rem;
+    border-radius: 10px;
+}

@@ -20,7 +20,6 @@ namespace MsgBoard.Models
             get { return datePosted; }
             set { datePosted = value; }
         }
-
         public ICollection<MessageResponse> MessageResponses { get; set; }
     }
 }

@@ -20,8 +20,6 @@ namespace MsgBoard.Models
             get { return datePosted; }
             set { datePosted = value; }
         }
-
-        //public int MessageID { get; set; }
         public MessagePost MessagePost { get; set; }
 
     }
