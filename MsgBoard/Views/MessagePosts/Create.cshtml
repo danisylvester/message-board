@@ -1,0 +1,67 @@
+﻿@model MsgBoard.Models.MessagePost
+
+<div class="subPageHeader">
+    <h1>Create a New Post</h1>
+</div>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to Message Board</a>
+</div>
+
+@section Scripts {
+    @if (ViewBag.MessagePost != null)
+    {
+        <script>
+
+        if (@ViewBag.MessagePost.ID > 0) {
+            $('#successModal').modal('show');
+        }
+        </script>
+    }
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Your Post has been submitted!</h5>
+            </div>
+            @if (ViewBag.MessagePost != null)
+            {
+                <div class="modal-body">
+                    Your Post ID = @ViewBag.MessagePost.ID
+                </div>
+            }
+            <div class="modal-footer">
+                <a asp-controller="Home" asp-action="Index">Back to Message Board</a>
+            </div>
+        </div>
+    </div>
+</div>

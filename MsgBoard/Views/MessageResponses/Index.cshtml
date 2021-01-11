@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MsgBoard.Models.MessageResponse>
+
+<h3 class="my-5">Responses</h3>
+<div class="card">
+    <div class="card-header">
+        @foreach (var item in Model)
+        {
+            <div>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                <p>@Html.DisplayFor(modelItem => item.DatePosted)</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="mt-5">
+    <a asp-controller="Home" asp-action="Index">Back to Message Board</a>
+</div>
+
+

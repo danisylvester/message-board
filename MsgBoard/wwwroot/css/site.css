@@ -1,0 +1,17 @@
+﻿.homeHeading {
+    margin: 2rem 0rem;
+    padding: 1rem 0rem;
+    text-align: center;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index:100;
+    width: 100%;
+    background-color: white;
+}
+.homeHeading h1{
+    margin-bottom: 1rem;
+}
+.subPageHeader{
+    margin: 1rem 0rem;
+}

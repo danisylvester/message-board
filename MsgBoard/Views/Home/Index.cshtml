@@ -1,0 +1,28 @@
+﻿@model MsgBoard.ViewModels.MessageBoardViewModel
+
+<div>
+    <div class="homeHeading">
+        <h1>Message Board</h1>
+        <a class="btn btn-primary" asp-controller="MessagePosts" asp-action="Create">Create A New Post</a>
+    
+    </div>
+
+    @foreach(var item in Model.Posts)
+    {
+        <div class="card mb-2">
+            <div class="card-header">
+            <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+            </div>    
+            <div class="card-body">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.DatePosted)</small></p>
+                <a class="btn btn-outline-primary" asp-controller="MessageResponses" asp-action="Create" asp-route-id="@item.ID">Respond</a>
+                @if (item.MessageResponses != null)
+                {
+                <a class="btn btn-outline-secondary" asp-controller="MessageResponses" asp-action="Index" asp-route-id="@item.ID">View Responses <span>(@item.MessageResponses.Count)</span></a>
+                }
+        
+            </div>
+        </div>
+    }
+</div>
