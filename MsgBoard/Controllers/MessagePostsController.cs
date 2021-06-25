@@ -19,6 +19,11 @@ namespace MsgBoard.Controllers
             _context = context;
         }
 
+        public IActionResult Index()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: MessagePosts/Create
         public IActionResult Create()
         {
